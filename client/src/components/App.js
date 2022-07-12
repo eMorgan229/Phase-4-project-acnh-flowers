@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Switch, Route} from "react-router-dom"
-import Login from './Login'
-import Header from './Header'
-import SignUpForm from './SignUpForm'
+ import Login from './Login'
+ import Header from './Header'
+ import SignUpForm from './SignUpForm'
+ import acnhLogo from '../Images/acnhLogo.jpg'
+ import {Switch, Route} from "react-router-dom"
+//bootstrap
+import NavBar from "./Navbar"
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -27,16 +31,32 @@ function App() {
 
   
 
+  //bootstrap return
   return (
-    <div className="App">
-      <Header user={user} onLogout={handleLogout}/>
-       
-        <Login onLogin={handleLogin}/>
-       <SignUpForm onLogin={handleLogin}/>
-      
-      
+    <div>
+      <NavBar user={user} setUser={setUser}/>
+    <Switch>
+      <Route path="/login">
+        <Login/>
+      </Route>
+    </Switch>
     </div>
-  )
+    
+    
+  );
+
+
+//original return
+  // return (
+  //   <div className="App">
+  //     <Header user={user} onLogout={handleLogout}/>
+       
+  //       <Login onLogin={handleLogin}/>
+  //      <SignUpForm onLogin={handleLogin}/>
+      
+      
+  //   </div>
+  // )
 }
 
 export default App
