@@ -30,6 +30,7 @@ const[name, setName] = useState('')
       
   };
   return (
+    <div>
     <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
         <input
@@ -66,6 +67,7 @@ const[name, setName] = useState('')
         <button type="submit">Sign Up:</button>
     
     </form>
+    </div>
   )
 }
 

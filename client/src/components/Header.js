@@ -8,7 +8,7 @@ function Header({user, onLogout}) {
   function handleLogout() {
     fetch("/logout", {
       method: "DELETE",
-    }).then(() => onLogout());
+    }).then(() => onLogout(user));
   }
 
   return (
