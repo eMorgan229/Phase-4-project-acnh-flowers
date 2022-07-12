@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { Switch, Route} from "react-router-dom"
 import Login from './Login'
+import Header from './Header'
+import SignUpForm from './SignUpForm'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -12,20 +15,26 @@ function App() {
       }
     });
   },[]);
-  if(user) {
-    return <h2>Welcome, {user.username}</h2>
-  }
+  
 
   function handleLogin(user) {
-    setUser(user)
+    setUser(user);
+  }
+
+  function handleLogout() {
+    setUser(null);
   }
 
   
 
   return (
-    <div>
-      <Login onLogin={handleLogin}/>
-
+    <div className="App">
+      <Header user={user} onLogout={handleLogout}/>
+       
+        <Login onLogin={handleLogin}/>
+       <SignUpForm onLogin={handleLogin}/>
+      
+      
     </div>
   )
 }

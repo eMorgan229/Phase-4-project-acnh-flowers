@@ -1,9 +1,30 @@
 import React from 'react'
+import {Link} from "react-router-dom"
+import acnhLogo from '../Images/acnhLogo.jpg'
 
-function Header() {
+
+function Header({user, onLogout}) {
+
+  function handleLogout() {
+    fetch("/logout", {
+      method: "DELETE",
+    }).then(() => onLogout());
+  }
+
   return (
-    <div>Header</div>
-  )
+    <header>
+          <img src={acnhLogo} alt="acnh-flowers logo"> 
+          </img>
+          {user ? (
+            <div>
+              <p>Welcome, {user.name}!</p>
+              <button onClick={handleLogout}>Logout</button>
+              </div>
+          ):(
+        <Link to="/login">Click Here to Login</Link>
+          )}
+    </header>
+  );
 }
 
 export default Header
