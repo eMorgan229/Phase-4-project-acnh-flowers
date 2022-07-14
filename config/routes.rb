@@ -14,4 +14,10 @@ Rails.application.routes.draw do
 # FLOWER routes
 get "/flowers", to: "flowers#index"
 patch "/flowers/:id", to: "flowers#update"
+
+#COMMENTS routes
+get "/comments", to: "comments#index"
+# get "/comments/:id", to: "comments#show"
 end
+
+

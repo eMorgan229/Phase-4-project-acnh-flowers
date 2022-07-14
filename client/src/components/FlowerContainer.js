@@ -1,8 +1,19 @@
 import React from 'react'
 import {useEffect, State} from 'react'
+import { Grid } from 'react-bootstrap';
 import FlowerCard from './FlowerCard'
 
-function FlowerContainer({flowers}) {
+function FlowerContainer({flowers, onDeleteFlower}) {
+
+/* map for flower cards */
+const flowerCards = flowers.map((flower) => (
+  <FlowerCard
+    key={flower.id}
+    flower={flower}
+    onDeleteFlower={onDeleteFlower}
+  />
+));
+
   return (
     <div>
       <div 
@@ -27,18 +38,13 @@ function FlowerContainer({flowers}) {
             </div>
             
             {/* flower container */}
-            <div>
-               <ul className="cards">
-                {flowers.map((flower) => (
-                  <FlowerCard
-                  key={flower.id}
-                  flower={flower}
-                  />
-                ))}
-              </ul>
-
-
-
+            <div 
+              style={{
+                display: 'flex',
+                alignItems: 'center'
+              }}
+            >
+               {flowerCards}
             </div>
 
     </div>
@@ -46,4 +52,4 @@ function FlowerContainer({flowers}) {
 } 
 
 
-export default Login
+export default FlowerContainer
