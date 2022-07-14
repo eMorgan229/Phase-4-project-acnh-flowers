@@ -2,7 +2,22 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-function NavBar(){
+import acnhLogo from '../Images/acnhLogo.jpg'
+export default NavBar
+
+function NavBar({user, onLogout}){
+
+    
+
+        function handleLogout() {
+          fetch("/logout", {
+            method: "DELETE",
+          }).then(() => onLogout(user));
+        }
+    
+       
+
+
     return(
     <Navbar bg="light" expand="lg" sticky="top">
         <Container>
@@ -14,10 +29,18 @@ function NavBar(){
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
                 <Nav.Link href="/">Home/About</Nav.Link>
-                <Nav.Link href="/signup">Login
-                </Nav.Link>
-    
-                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                {user ? (
+            <div>
+              <p>Welcome, {user.name}!</p>
+              <button onClick={handleLogout}>Logout</button>
+              </div>
+          ):(
+        <Nav.Link href="/login">Login</Nav.Link>
+          )}
+         <Nav.Link href="/flowers">Flowers</Nav.Link>
+
+
+                {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                     Another action
@@ -27,11 +50,11 @@ function NavBar(){
                 <NavDropdown.Item href="#action/3.4">
                     Separated link
                 </NavDropdown.Item>
-                </NavDropdown>
+                </NavDropdown> */}
+
             </Nav>
             </Navbar.Collapse>
         </Container>
         </Navbar>
     )
-}
-    export default NavBar
+    }

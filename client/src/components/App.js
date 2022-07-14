@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
  import Login from './Login'
- import Header from './Header'
  import SignUpForm from './SignUpForm'
- import acnhLogo from '../Images/acnhLogo.jpg'
- import {Switch, Route} from "react-router-dom"
+ import Home from './Home'
+ import FlowerContainer from './FlowerContainer'
+ import {Routes, Route} from "react-router-dom"
 //bootstrap
 import NavBar from "./Navbar"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
+  //LOGIN
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -29,17 +30,26 @@ function App() {
     setUser(null);
   }
 
+  //FLOWER FETCH
+  // const [flowers, setFlowers] = useState([]);
+
+  useEffect(() => {
+    fetch("")
+  })
+
   
 
   //bootstrap return
   return (
     <div>
-      <NavBar user={user} setUser={setUser}/>
-    <Switch>
-      <Route path="/login">
-        <Login/>
-      </Route>
-    </Switch>
+      <NavBar user={user} setUser={setUser} onLogout={handleLogout} onLogin={handleLogin}/>
+    <Routes>
+      <Route path="/login" element={<Login onLogin={handleLogin}/>}/>
+      <Route path="/" element={<Home/>}/>
+      {/* <Route path="/flowers" element={<FlowerContainer/>}/> */}
+
+
+    </Routes>
     </div>
     
     
