@@ -31,12 +31,25 @@ function App() {
   }
 
   //FLOWER FETCH
-  // const [flowers, setFlowers] = useState([]);
+   const [flowers, setFlowers] = useState([]);
 
   useEffect(() => {
-    fetch("")
-  })
+    fetch("/flowers")
+    .then((r) => r.json())
+    .then(setFlowers);
+  }, []);
 
+  function handleDeleteFlower(flowerToDelete) {
+    const updatedFlowers = flowers.filter((flower) => flower.id !== flowerToDelete.id);
+    setFlowers(updatedFlowers);
+  }
+
+  function handleUpdateFlower(updatedFlower) {
+    const updatedFlowers = flowers.map((flower) =>
+      flower.id === updatedFlower.id ? updatedFlower : flower
+    );
+    setFlowers(updatedFlowers);
+  }
   
 
   //bootstrap return
@@ -46,7 +59,12 @@ function App() {
     <Routes>
       <Route path="/login" element={<Login onLogin={handleLogin}/>}/>
       <Route path="/" element={<Home/>}/>
-      {/* <Route path="/flowers" element={<FlowerContainer/>}/> */}
+      <Route path="/flowers" element={<FlowerContainer
+        flowers={flowers}
+        onDeleteFlower={handleDeleteFlower}
+        onUpdateFlower={handleUpdateFlower}
+        />}
+      />
 
 
     </Routes>

@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 function Login({onLogin}) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [errors, setErrors] = useState([])
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -13,8 +14,14 @@ function Login({onLogin}) {
           },
           body: JSON.stringify({ username, password }),
         })
-        .then((r) => r.json())
-        .then((user) => onLogin(user))
+        .then((r) => {
+          if (r.ok) {
+            r.json().then((user) => onLogin(user));
+            
+          } else {
+            r.json().then((err) => setErrors(err.errors));
+          }
+        })
 
         //reset the input after submit
         setUsername('')
@@ -40,6 +47,11 @@ function Login({onLogin}) {
       />
       <button type="submit">Login</button>
     </form>
+    <>
+    {errors.map((err) => (
+      <div key={err}>{err}</div>
+      ))}
+    </>
   </div>
   )
 }
