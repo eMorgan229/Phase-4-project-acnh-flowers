@@ -2,7 +2,8 @@ import React, {useState} from 'react'
 
 function Login({onLogin}) {
   const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
+  const [password, setPassword] = useState("")
+
     function handleSubmit(e) {
         e.preventDefault();
         fetch('/login', {
