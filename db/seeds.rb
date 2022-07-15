@@ -26,6 +26,10 @@ Comment.create(user_id: 2, flower_id: 2, review_content: "this flower is gereat!
 puts "I am done seeding"
 
 
+MyGarden.create(user_id: 1, flower_id: 3)
+MyGarden.create(user_id: 1, flower_id: 2)
+MyGarden.create(user_id: 2, flower_id: 2)
+
 # - [ ] add an intro page that pops up to show off the logo
 # - [ ] add a my garden route 
 # - [ ] add the functionality to have the flowers added there when the button is clicked *** only if someone is logged in and then these flowers will be associated to this particular user

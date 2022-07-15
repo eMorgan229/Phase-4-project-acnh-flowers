@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react'
 //bootstrap
 import NavBar from "./Navbar"
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Garden from './Garden'
 
 function App() {
   //LOGIN
@@ -24,6 +25,7 @@ function App() {
 
   function handleLogin(user) {
     setUser(user);
+    console.log(user)
   }
 
   function handleLogout() {
@@ -65,6 +67,8 @@ function App() {
         onUpdateFlower={handleUpdateFlower}
         />}
       />
+      <Route path="/my-garden" element={<Garden user={user} setUser={setUser}/>}/>
+
 
 
     </Routes>

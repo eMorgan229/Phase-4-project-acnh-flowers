@@ -4,24 +4,19 @@ import Card from 'react-bootstrap/Card';
 
 function FlowerCard({flower, onDeleteFlower, onUpdateFlower}){
     const {id, name, image, parents, season, is_in_your_garden} = flower;
-  function handleDeleteClick() {
-    fetch(`/flowers/${id}`, {
-      method: "DELETE",
-    })
-      .then((r) => r.json())
-      .then(() => {
-        onDeleteFlower(flower);
-      });
-  }
+
+  
 
   //toggle boolean to be the opposite of what it currently is:
-  function handleAddToGardenClick() {
+  function handleAddToGardenClick(flower) {
+    // e.preventDefault()
     const updateObj = {
-      is_in_your_garden: !is_in_your_garden
+      flower_id: flower.id,
+      user_id: 1
     };
 
-    fetch(`flowers/${id}`, {
-      method: "PATCH",
+    fetch('/garden', {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -40,8 +35,8 @@ function FlowerCard({flower, onDeleteFlower, onUpdateFlower}){
           <h5>PARENTS: {parents}</h5>
           <h5>SEASON: {season}</h5>
         </Card.Text>
-        <Button variant="primary" onClick={handleAddToGardenClick}>Add to your Garden!</Button>
-        <Button variant="primary" onClick={handleDeleteClick}>Delete Flower</Button>
+        <Button variant="primary" onClick={() => handleAddToGardenClick(flower)}>Add to your Garden!</Button>
+        {/* <Button variant="primary" onClick={handleDeleteClick}>Delete Flower</Button> */}
       </Card.Body>
     </Card>
 
