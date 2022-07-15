@@ -11,11 +11,13 @@ class MyGardensController < ApplicationController
     end
 
     #/flowers
-    def destroy
-        garden = MyGarden.find(garden_params[:user_id], garden_params[:flower_id])
-        garden.destroy
-
-        head :no_content
+    def delete_garden
+        p params[:flower_id]
+        garden = MyGarden.find_by(user_id: params[:user_id], flower_id: params[:flower_id])
+        # all = MyGarden.all
+        # puts all
+        puts garden
+        render json: garden
     end
 
     

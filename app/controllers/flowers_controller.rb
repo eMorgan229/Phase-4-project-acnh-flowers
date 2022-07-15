@@ -17,7 +17,9 @@ class FlowersController < ApplicationController
             render json: {error: "Flower not found"}, status: :not_found
         end
     end
-
+    #  def delete_flower
+    #     flower = MyGarden.find()
+    #  end
     #upate the update method to also update the user_id foreign when they click the my garden button
 
 

@@ -35,11 +35,8 @@ function Home() {
         <div class="container">
             With this app, everything you want to know about the flowers of the ACNH world is at your fingertips! We have information ranging from the genius behind the genetics of the flowers in the game, to resources on flower breeding and even a tool to help you start your very own ACNH garden and track your progress!
         </div>
-        <h5 class="card-title">Additional Resources</h5>
+        <h5 class="card-title">Additional Resources:</h5>
 
-        <div class="container">
-            Links to resources here
-        </div>
         <h5 class="card-title">Special Thanks!</h5>
 
         <div class="container">
