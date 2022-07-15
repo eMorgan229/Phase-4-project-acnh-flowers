@@ -41,10 +41,7 @@ function App() {
     .then(setFlowers);
   }, []);
 
-  function handleDeleteFlower(flowerToDelete) {
-    const updatedFlowers = flowers.filter((flower) => flower.id !== flowerToDelete.id);
-    setFlowers(updatedFlowers);
-  }
+  
 
   function handleUpdateFlower(updatedFlower) {
     const updatedFlowers = flowers.map((flower) =>
@@ -52,6 +49,7 @@ function App() {
     );
     setFlowers(updatedFlowers);
   }
+  
   
 
   //bootstrap return
@@ -63,11 +61,13 @@ function App() {
       <Route path="/" element={<Home/>}/>
       <Route path="/flowers" element={<FlowerContainer
         flowers={flowers}
-        onDeleteFlower={handleDeleteFlower}
         onUpdateFlower={handleUpdateFlower}
         />}
       />
-      <Route path="/my-garden" element={<Garden user={user} setUser={setUser}/>}/>
+      <Route path="/my-garden" element={<Garden 
+      user={user} 
+      setUser={setUser}
+       />}/>
 
 
 

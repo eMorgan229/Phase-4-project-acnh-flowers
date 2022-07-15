@@ -14,13 +14,15 @@ Rails.application.routes.draw do
 # FLOWER routes
 get "/flowers", to: "flowers#index"
 patch "/flowers/:id", to: "flowers#update"
+# delete "/flowers/:id", to: "flowers#delete_flower"
+
 
 #USER routes
 get "/user/:id/flowers", to: "users#flowers"
 
 #GARDEN
 post "/garden", to: "my_gardens#create"
-delete "/garden", to: "my_gardens#destory"
+post "/delete-garden", to: "my_gardens#delete_garden"
 
 
 
