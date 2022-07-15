@@ -37,6 +37,8 @@ function NavBar({user, onLogout}){
         <Nav.Link href="/login">Login</Nav.Link>
           )}
          <Nav.Link href="/flowers">Flowers</Nav.Link>
+         <Nav.Link href="/my-garden">Garden</Nav.Link>
+
 
 
                 {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">

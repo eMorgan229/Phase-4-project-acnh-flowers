@@ -8,9 +8,29 @@ class UsersController < ApplicationController
     end
 
     #/me
+    # OPTIONAL: /user/:uid
     def show
         user = User.find_by(id: session[:user_id])
         render json: user
+
+        # if user
+        #     render json: user
+        # else
+        #     render json: { error: "Not authorized"} status: :unauthorized
+        # end
+    end
+
+    #/user/:uid/flowers
+    # 1. grab user id ftom cookie 2. string interpolate into URL fetch
+    def flowers
+        # byebug
+        user_id = params[:id]
+        flowers = MyGarden.where(user: user_id).map do |flower|
+            Flower.find_by(id: flower.flower_id)
+        end
+
+
+        render json: flowers
 
         # if user
         #     render json: user

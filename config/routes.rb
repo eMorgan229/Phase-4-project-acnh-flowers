@@ -15,9 +15,21 @@ Rails.application.routes.draw do
 get "/flowers", to: "flowers#index"
 patch "/flowers/:id", to: "flowers#update"
 
+#USER routes
+get "/user/:id/flowers", to: "users#flowers"
+
+#GARDEN
+post "/garden", to: "my_gardens#create"
+delete "/garden", to: "my_gardens#destory"
+
+
+
 #COMMENTS routes
 get "/comments", to: "comments#index"
 # get "/comments/:id", to: "comments#show"
+
+#My_Garden routes
+# get "/garden/:id". to: "my_garden#show"
 end
 
 
